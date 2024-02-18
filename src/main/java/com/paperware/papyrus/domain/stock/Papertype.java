@@ -24,6 +24,9 @@ public class Papertype {
     /**
      * constructor
      */
+    public Papertype(String name) {
+        this.name = name;
+    }
 
     /**
      * atomic relation method
