@@ -4,6 +4,8 @@ import com.paperware.papyrus.domain.enumerator.Manufacturer;
 import com.paperware.papyrus.domain.enumerator.SheetsPerReam;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ public class Ream extends Stock{
     /**
      * fields
      */
+    @Enumerated(EnumType.STRING)
     private SheetsPerReam sheetsPerReam;
     private int initialSheets;
 

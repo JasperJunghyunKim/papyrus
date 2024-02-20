@@ -1,7 +1,6 @@
 package com.paperware.papyrus.dto;
 
 import com.paperware.papyrus.domain.stock.Papertype;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

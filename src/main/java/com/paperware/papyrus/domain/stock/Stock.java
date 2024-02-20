@@ -1,6 +1,7 @@
 package com.paperware.papyrus.domain.stock;
 
 import com.paperware.papyrus.domain.enumerator.Manufacturer;
+import com.paperware.papyrus.domain.enumerator.Packaging;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,9 +22,7 @@ public class Stock {
     @GeneratedValue
     @Column(name = "stock_id")
     private Long id;
-    // @Enumerated(EnumType.STRING)
-    // private Packaging packaging;
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "papertype_id")
     private Papertype papertype;
     private int gsm;
@@ -36,7 +35,6 @@ public class Stock {
      * constructor
      */
     public Stock(Papertype papertype, int gsm, Manufacturer manufacturer, int paperWidth, int paperLength) {
-        // this.packaging = packaging;
         this.papertype = papertype;
         this.gsm = gsm;
         this.manufacturer = manufacturer;
@@ -51,6 +49,10 @@ public class Stock {
     /**
      * change method (i.e., alternative of @Setter)
      */
+    public void changePapertype(Papertype papertype){
+        this.papertype = papertype;
+    }
+    public void changePaperLength(int paperLength) {this.paperLength = paperLength;}
 
     /**
      * static create method
@@ -59,5 +61,19 @@ public class Stock {
     /**
      * business method
      */
+
+    /**
+     * etc
+     */
+    @Transient
+    public Packaging getPackagingType(){
+        return switch (this) {
+            case Roll roll -> Packaging.ROLL;
+            case Ream ream -> Packaging.REAM;
+            case Skid skid -> Packaging.SKID;
+            case Box box -> Packaging.BOX;
+            default -> null;
+        };
+    }
 }
 

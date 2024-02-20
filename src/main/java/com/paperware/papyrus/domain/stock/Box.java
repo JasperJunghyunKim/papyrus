@@ -5,6 +5,8 @@ import com.paperware.papyrus.domain.enumerator.PacksPerBox;
 import com.paperware.papyrus.domain.enumerator.SheetsPerPack;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +20,9 @@ public class Box extends Stock{
     /**
      * fields
      */
+    @Enumerated(EnumType.STRING)
     private PacksPerBox packsPerBox;
+    @Enumerated(EnumType.STRING)
     private SheetsPerPack sheetsPerPack;
     private int initialSheets;
 

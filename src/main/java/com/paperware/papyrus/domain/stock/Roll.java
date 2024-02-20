@@ -15,6 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DiscriminatorValue("Roll")
 public class Roll extends Stock{
+
+    public static final int ROLL_LENGTH = 0;
+
     /**
      * fields
      */
